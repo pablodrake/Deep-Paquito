@@ -16,6 +16,7 @@ Matrix scalarMatrixOp(myType (*scalarMatrix_elem_wise)(myType, myType), myType s
 Matrix matrixVectorOp(myType (*matrixVector_elem_wise)(myType, myType), const Matrix &input, const Vector &vector);
 Vector vectorVectorOp(myType (*vectorVectorOp_elem_wise)(myType, myType), const Vector &a, const Vector &b);
 Vector vectorScalarOp(myType (*vectorScalarOp_elem_wise)(myType, myType), const Vector &input, myType scalar);
+Vector unaryVectorOp(myType (*elemwise_function)(myType), const Vector &input);
 
 Matrix matrixMultiply(const Matrix &a, const Matrix &b);
 Matrix matrixTranspose(const Matrix &a);

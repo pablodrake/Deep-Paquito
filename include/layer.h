@@ -8,6 +8,7 @@ class Layer {
         const myType learning_rate = 0.01;
         Matrix previous_activation;
     public:
+        static const int batch_size = 8;
         virtual Matrix forward(const Matrix &output);
         virtual Matrix backward(const Matrix &derivative_wrt_output);
 };

@@ -96,7 +96,6 @@ int main(){
     const int image_width = 28;
     const int image_height = 28;
 
-
     Matrix latent;
     Matrix generated;
     MSE loss;
@@ -118,12 +117,12 @@ int main(){
         std::make_shared<ElementWiseActivationLayer>(sigmoid, sigmoidDerivative),
     });
 
-    Matrix data = loadData("./mnist_train.txt");
+    Matrix data = loadData("./mnist_train_githubsmall.txt");
     Matrix batch;
     normalizeData(data);
 
-    int epochs = 100000;
-    int batch_size = 8;
+    int epochs = 1;
+    int batch_size = Layer::batch_size;
     int batches_per_epoch = data.size() / batch_size;
 
     Matrix test(1, Vector(image_width*image_height, (double)rand()/RAND_MAX));
@@ -132,12 +131,14 @@ int main(){
         for(int batch_idx = 0; batch_idx < batches_per_epoch; batch_idx++){
 
             batch = calculateBatches(data,batch_size,batch_idx);
-
+            std::cout << "Current batch: " << batch_idx << " of " << batches_per_epoch << " of epoch: " << i << std::endl;
 
             // Forward-propagation
             latent = encoder.forward(batch);
             generated = decoder.forward(latent);
-
+            Matrix generate = {
+                {0.05, 0.3, 0.4, 0.26, 0.3, 0.18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            };
 
             if(batch_idx % 20 == 0){
                 std::cout << loss.forward(generated, batch) << std::endl;
@@ -148,7 +149,7 @@ int main(){
             // Back-propagation and optimization
             Matrix derivative_wrt_output = loss.backward(generated, batch);
             encoder.backward(decoder.backward(derivative_wrt_output));
+            SaveBatch(decoder.forward(generate), image_width, image_height, 1, "images/", "syntetik");
         }
     }
-    coutMatrix(generated);
 }

@@ -299,6 +299,15 @@ Vector vectorScalarOp(myType (*vectorScalarOp_elem_wise)(myType, myType), const 
     return output;
 }
 
+Vector unaryVectorOp(myType (*elemwise_function)(myType), const Vector &input){
+    Vector output(input.size(), 0);
+
+    for(int row = 0; row < input.size(); row++){
+        output[row] = elemwise_function(input[row]);
+    }
+    return output;
+}
+
 myType product(myType a, myType b){
     return a*b;
 }

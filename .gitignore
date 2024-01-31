@@ -1,4 +1,4 @@
 images/*.bmp
 obj/*.o
-bin/*
+bin/paquito
 .vscode/

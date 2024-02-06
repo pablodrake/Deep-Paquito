@@ -5,7 +5,7 @@
 
 class Layer {
     protected:
-        const myType learning_rate = 0.01;
+        const myType learning_rate = 0.001;
         Matrix previous_activation;
     public:
         static const int batch_size = 8;

@@ -4,7 +4,7 @@
 #include <cmath>
 #include <vector>
 
-typedef double myType;
+typedef float myType;
 typedef std::vector<std::vector<myType>> Matrix;
 typedef std::vector<myType> Vector;
 

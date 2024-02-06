@@ -12,9 +12,14 @@ public:
 
 class MSE : public Loss{
     public:
-    myType forward(const Matrix &output, const Matrix &expected_output) const override;
-    Matrix backward(const Matrix &output, const Matrix &expected_output) const override;
+        myType forward(const Matrix &output, const Matrix &expected_output) const override;
+        Matrix backward(const Matrix &output, const Matrix &expected_output) const override;
 };
 
+class CE : public Loss{
+    public:
+        myType forward(const Matrix &output, const Matrix &expected_output) const override;
+        Matrix backward(const Matrix &output, const Matrix &expected_output) const override;
+};
 #endif //LOSS_H
 

@@ -19,3 +19,11 @@ myType MSE::forward(const Matrix &output, const Matrix &expected_output) const{
 Matrix MSE::backward(const Matrix &output, const Matrix &expected_output) const{
     return meanSquaredErrorDerivative(output, expected_output);
 }
+
+myType CE::forward(const Matrix &output, const Matrix &expected_output) const{
+    return crossEntropy(output, expected_output);
+}
+
+Matrix CE::backward(const Matrix &output, const Matrix &expected_output) const{
+    return crossEntropyDerivative(output, expected_output);
+}

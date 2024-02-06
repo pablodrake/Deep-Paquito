@@ -6,8 +6,8 @@ INC_DIR = include
 
 all: $(BIN_DIR)/paquito
 
-$(BIN_DIR)/paquito: $(OBJ_DIR)/paquito.o $(OBJ_DIR)/layer.o $(OBJ_DIR)/fullyconnectedlayer.o $(OBJ_DIR)/math.o $(OBJ_DIR)/neuralnetwork.o $(OBJ_DIR)/loss.o $(OBJ_DIR)/elementwiseactivationlayer.o $(OBJ_DIR)/bitmap.o
-	g++ -fopenmp -o $(BIN_DIR)/paquito $(OBJ_DIR)/layer.o $(OBJ_DIR)/fullyconnectedlayer.o $(OBJ_DIR)/math.o $(OBJ_DIR)/paquito.o $(OBJ_DIR)/neuralnetwork.o $(OBJ_DIR)/loss.o $(OBJ_DIR)/elementwiseactivationlayer.o $(OBJ_DIR)/bitmap.o -I$(INC_DIR)
+$(BIN_DIR)/paquito: $(OBJ_DIR)/paquito.o $(OBJ_DIR)/layer.o $(OBJ_DIR)/fullyconnectedlayer.o $(OBJ_DIR)/math.o $(OBJ_DIR)/neuralnetwork.o $(OBJ_DIR)/loss.o $(OBJ_DIR)/activationlayers.o $(OBJ_DIR)/bitmap.o
+	g++ -fopenmp -o $(BIN_DIR)/paquito $(OBJ_DIR)/layer.o $(OBJ_DIR)/fullyconnectedlayer.o $(OBJ_DIR)/math.o $(OBJ_DIR)/paquito.o $(OBJ_DIR)/neuralnetwork.o $(OBJ_DIR)/loss.o $(OBJ_DIR)/activationlayers.o $(OBJ_DIR)/bitmap.o -I$(INC_DIR)
 
 $(OBJ_DIR)/paquito.o: $(SRC_DIR)/paquito.cpp
 	g++ -fopenmp -o $(OBJ_DIR)/paquito.o -g -c $(SRC_DIR)/paquito.cpp -I$(INC_DIR)
@@ -27,8 +27,8 @@ $(OBJ_DIR)/loss.o: $(SRC_DIR)/loss.cpp $(INC_DIR)/loss.h
 $(OBJ_DIR)/math.o: $(SRC_DIR)/math.cpp $(INC_DIR)/math.h
 	g++ -fopenmp -o $(OBJ_DIR)/math.o -g -c $(SRC_DIR)/math.cpp -I$(INC_DIR)
 
-$(OBJ_DIR)/elementwiseactivationlayer.o: $(SRC_DIR)/elementwiseactivationlayer.cpp $(INC_DIR)/elementwiseactivationlayer.h
-	g++ -fopenmp -o $(OBJ_DIR)/elementwiseactivationlayer.o -g -c $(SRC_DIR)/elementwiseactivationlayer.cpp -I$(INC_DIR)
+$(OBJ_DIR)/activationlayers.o: $(SRC_DIR)/activationlayers.cpp $(INC_DIR)/activationlayers.h
+	g++ -fopenmp -o $(OBJ_DIR)/activationlayers.o -g -c $(SRC_DIR)/activationlayers.cpp -I$(INC_DIR)
 		
 $(OBJ_DIR)/bitmap.o: $(SRC_DIR)/bitmap.cpp $(INC_DIR)/bitmap.h
 	g++ -fopenmp -o $(OBJ_DIR)/bitmap.o -g -c $(SRC_DIR)/bitmap.cpp -I$(INC_DIR)

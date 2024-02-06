@@ -21,8 +21,7 @@ FullyConnectedLayer::FullyConnectedLayer(int input_size, int output_size) : bias
 
 Matrix FullyConnectedLayer::forward(const Matrix &input){
     previous_activation = input;
-    Matrix output = matrixMultiply(input, weights) + bias;
-    return output;
+    return matrixMultiply(input, weights) + bias;
 }
 
 Matrix FullyConnectedLayer::backward(const Matrix &derivative_wrt_output){

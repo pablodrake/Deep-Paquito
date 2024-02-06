@@ -7,13 +7,20 @@ myType division(myType a, myType b);
 myType sum(myType a, myType b);
 myType difference(myType a, myType b);
 myType sum(const Matrix &input);
+myType sum(const Vector &input);
+myType expSum(const Matrix &input, myType base);
+myType expSum(const Vector &input, myType base);
 myType mean(const Matrix &input);
+Vector createOneHotVector(int index, int size);
+Matrix createOneHotMatrix(const Vector &indexes, int size);
+Matrix createOneHotMatrix(const Matrix &indexes, int size);
 
 Matrix unaryMatrixOp(myType (*elemwise_function)(myType), const Matrix &input);
 Matrix matrixMatrixOp(myType (*matrixMatrix_elem_wise)(myType, myType), const Matrix &a, const Matrix &b);
 Matrix matrixScalarOp(myType (*matrixScalar_elem_wise)(myType, myType), const Matrix &input, myType scalar);
 Matrix scalarMatrixOp(myType (*scalarMatrix_elem_wise)(myType, myType), myType scalar, const Matrix &input);
 Matrix matrixVectorOp(myType (*matrixVector_elem_wise)(myType, myType), const Matrix &input, const Vector &vector);
+Matrix matrixVectorOp(Vector (*matrixVector_vector_wise)(const Vector &), const Matrix &input);
 Vector vectorVectorOp(myType (*vectorVectorOp_elem_wise)(myType, myType), const Vector &a, const Vector &b);
 Vector vectorScalarOp(myType (*vectorScalarOp_elem_wise)(myType, myType), const Vector &input, myType scalar);
 Vector unaryVectorOp(myType (*elemwise_function)(myType), const Vector &input);
@@ -54,11 +61,14 @@ myType leakyRelu(myType input);
 myType relu(myType input);
 myType sigmoid(myType input);
 myType meanSquaredError(const Matrix &input, const Matrix &expected_values);
+myType crossEntropy(const Matrix &input, const Matrix &expected_values);
+Vector softmax(const Vector &input);
 
 myType leakyReluDerivative(myType input);
 myType reluDerivative(myType input);
 myType sigmoidDerivative(myType input);
 Matrix meanSquaredErrorDerivative(const Matrix &input, const Matrix &expected_values);
+Matrix crossEntropyDerivative(const Matrix &input, const Matrix &expected_values);
 
 void coutMatrix(const Matrix &input);
 void coutVector(const Vector &input);
